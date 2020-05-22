@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'users#index'
   post '/login', to: "auth#login"
   get "/auto_login", to: "auth#auto_login"
-  get "/user_is_authed", to "auth#user_is_authed"
+  get "/user_is_authed", to: "auth#user_is_authed"
   # delete '/logout', to: 'sessions#destroy'
   # get '/logged_in', to: 'sessions#is_logged_in?'
   resources :users, only: [:create]
