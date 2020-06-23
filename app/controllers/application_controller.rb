@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery unless: -> { request.format.json? }
   before_action :require_login
 
   def encode_token(payload)
@@ -22,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def session_user
     decoded_hash = decoded_token
-    if decoded_hash && !decoded_hash.empty?
+    if !decoded_hash.empty?
       puts decoded_hash.class
       user_id = decoded_hash[0]['user_id']
       @user = User.find_by(id: user_id)
