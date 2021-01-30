@@ -13,6 +13,8 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
+require 'rack'
+require 'rack/cors'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -21,6 +23,7 @@ Bundler.require(*Rails.groups)
 
 module MealPlanning
   class Application < Rails::Application
+    config.api_only = true
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
